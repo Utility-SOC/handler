@@ -1,58 +1,71 @@
-#Overview
+# File Handler
 
-#The handler.py script provides functionalities to filter, deduplicate, and organize files based on their extensions. This script works in tandem with an installation script (install.py) and a launcher batch #file (launch.bat) to ensure smooth operation.
-#Table of Contents
+The File Handler is a utility designed to organize files, deduplicate based on SHA-1 hashing, and move them to appropriate directories based on their extensions. It provides a progress bar for a visual representation during the file processing phase.
 
-    System Requirements
-    Installation Instructions
-    Usage Instructions
-    Functional Overview
-    Function Definitions
+## Installation
 
-#1. System Requirements:
+1. Clone this repository:
+   ```bash
+   git clone [Your Repository URL]
+   cd [Your Repository Name]
 
-#    Python 3.6 or higher
-#    Windows, macOS, or Linux operating system
+    Run the installation script to set up the virtual environment and install the required dependencies:
 
-#2. Installation Instructions:
+    For Linux/macOS:
 
-#    Clone the repository or download the script files.
-#    Navigate to the directory containing install.py.
-#    Execute install.py:
+    bash
 
-#python install.py
+python install.py
 
-#This will set up a Python virtual environment and install the required dependencies.
-#3. Usage Instructions:
+For Windows:
 
-#    Use the launch.bat file to start the script.
-#    When prompted, provide the source folder, destination folder, and desired file extension (or press Enter for all files).
-#    The script will process the files and provide feedback on its operations.
+batch
 
-#4. Functional Overview:
+    python install.py
 
-#    Filter Files: Only considers files that are larger than 12KB. Ignores 0KB files and files smaller than 12KB.
-#    Deduplication: Checks for potential duplicates based on file size first. If there are multiple files with the same size and similar filenames (e.g., a.jpg and a 1.jpg), the script will hash the files to check for content similarity. Duplicate files (by content) will be ignored.
-#    Organize Files: Files will be moved into subfolders named according to their file extensions.
+Usage
 
-#5. Function Definitions:
-#get_file_hash(file_path, block_size=65536)
+    Navigate to the directory containing the handler scripts.
 
-#This function computes the SHA1 hash of the provided file.
-#Parameters:
+    Execute the starting script:
 
-#    file_path: Path to the file to be hashed.
-#    block_size: Size of the block to read from the file while hashing. Default is 65536 bytes.
+    For Linux/macOS:
 
-#Returns:
+    bash
 
-#    String (hexadecimal representation of the hash) or None in case of an error.
+    ./start.sh
 
-#copy_files(source_directory, dest_directory, min_size_kb)
+    For Windows:
+    Double-click start.bat or run it from the command prompt.
 
-#Main driver function that processes and organizes the files.
-#Parameters:
+    Follow the prompts to specify the source directory, destination directory, and the desired file extension.
 
-#    source_directory: Path to the source directory containing the files to be processed.
-#    dest_directory: Path to the destination directory where organized files will be saved.
-#    min_size_kb: Minimum size (in KB) of files that should be considered.
+Features
+
+    Organization: Organizes files into directories based on their extensions.
+
+    Deduplication: Identifies potential duplicate files based on size, and then by content using SHA-1 hashing to ensure that the same file doesn't get moved multiple times.
+
+    Progress Bar: A visual representation of the processing phase, ensuring that users can track the progress of the script's operations.
+
+Functions
+get_file_hash(file_path, block_size=65536)
+
+Computes the SHA-1 hash of the provided file.
+
+    file_path: Path to the file to be hashed.
+    block_size: Size of the block to read from the file while hashing. Default is 65536 bytes.
+
+Returns the hexadecimal representation of the hash.
+copy_files(source_directory, dest_directory, min_size_kb=12)
+
+Processes and organizes the files from the source directory to the destination directory.
+
+    source_directory: Path to the source directory containing the files to be processed.
+    dest_directory: Path to the destination directory where organized files will be saved.
+    min_size_kb: Minimum size (in KB) of files that should be considered. Default is 12KB.
+
+Processes the files, organizes them based on extensions, and checks for duplicates.
+Contributing
+
+If you're interested in contributing to the project, please submit a pull request or open an issue for discussion.
