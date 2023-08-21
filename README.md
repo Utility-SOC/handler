@@ -3,11 +3,11 @@
 #The handler.py script provides functionalities to filter, deduplicate, and organize files based on their extensions. This script works in tandem with an installation script (install.py) and a launcher batch #file (launch.bat) to ensure smooth operation.
 #Table of Contents
 
-#    System Requirements
-#    Installation Instructions
-#    Usage Instructions
-#    Functional Overview
-#    Function Definitions
+    System Requirements
+    Installation Instructions
+    Usage Instructions
+    Functional Overview
+    Function Definitions
 
 #1. System Requirements:
 
